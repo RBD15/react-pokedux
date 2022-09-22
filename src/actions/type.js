@@ -1,2 +1,5 @@
 export const SET_POKEMONS = "SET_POKEMONS";
 export const SET_POKEMON = "SET_POKEMON";
+export const ADD_POKEMON_LIST = "ADD_POKEMON_LIST";
+export const REMOVE_POKEMON_LIST = "REMOVE_POKEMON_LIST";
+export const SET_LOADING = "SET_LOADING";

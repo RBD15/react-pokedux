@@ -1,11 +1,14 @@
 import React, { Fragment } from "react";
+import { useSelector } from "react-redux";
 import PokeCard from "../components/PokeCard";
 import SearchBar from "../components/SearchBar";
+import Loading from '../components/Loading'
 
 function Main({pokemons}) {
+    const loading= useSelector(state=>state.loading);
     return (
         <Fragment>
-            <div Name="container py-3">
+            <div className="container py-3">
                 <header>
                     <div className="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
                         <a href="/" className="d-flex align-items-center text-dark text-decoration-none">
@@ -28,10 +31,16 @@ function Main({pokemons}) {
                 <main>
                         <SearchBar/>
                     <div className="row row-cols-1 row-cols-md-3 mb-3 text-center">
-                        {
-                        pokemons.map(pokemon=>{
-                            return <PokeCard key={pokemon.name} pokemon={pokemon}/>
-                        })}
+                    {(()=>{
+                            if(loading==true){
+                                return <Loading></Loading>
+                            }else{
+                                return pokemons.map(pokemon=>{
+                                    return <PokeCard key={pokemon.name} pokemon={pokemon}/>
+                                })
+                            }
+                        })()
+                    }
                     </div>
                 </main>
             </div>

@@ -1,22 +1,23 @@
-import React , { useEffect,useState }  from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
-import { SET_POKEMON } from "../actions/type";
-import {getPokemon} from '../api'
+
 
 function PokeCard({pokemon}){
-    // const dispatch = useDispatch()
-    // const [pokemonData,setPokemonData] = useState({})
+    const dispatch = useDispatch()
+    const addPokemon=()=>{
+        dispatch({
+            type:'ADD_POKEMON_LIST',
+            payload:pokemon
+        })
+    }
 
-    // useEffect(()=>{
-    //     getPokemon(pokemon.url).then(res=>
-    //         dispatch({
-    //             'type':SET_POKEMON,
-    //             'payload':res
-    //         })
-    //         )
-    // },[])
+    const removePokemon=()=>{
+        dispatch({
+            type:'REMOVE_POKEMON_LIST',
+            payload:pokemon
+        })
+    }
 
-    // console.log(getPokemon(pokemon.url))
     return(
         <div className="col">
         <div className="card mb-4 rounded-3 shadow-sm">
@@ -31,9 +32,15 @@ function PokeCard({pokemon}){
                     )}
                     
                 </ul>
-                <button type="button" className="w-45 btn btn-lg btn-outline-primary mx-1">Add</button>
-                <button type="button" className="w-45 btn btn-lg btn-outline-danger mx-1">Remove</button>
+                {(()=>{
+                    if(!pokemon.isFav){
+                        return <button type="button" className="w-45 btn btn-lg btn-outline-primary mx-1" onClick={addPokemon}>Add</button>
 
+                    }else{
+                        return <button type="button" className="w-45 btn btn-lg btn-outline-danger mx-1" onClick={removePokemon} >Remove</button>
+                    }
+                })()
+                }
             </div>
         </div>
     </div>
