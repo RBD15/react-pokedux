@@ -1,5 +1,5 @@
 export const getPokemons= async()=>{
-    const pokemons= await fetch('https://pokeapi.co/api/v2/pokemon/?limit=5')
+    const pokemons= await fetch('https://pokeapi.co/api/v2/pokemon/?limit=50')
     .then(res=>res.json().then(
         res=> res.results)).catch(err=>console.log(err))
     return pokemons

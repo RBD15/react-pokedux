@@ -10,12 +10,12 @@ function App() {
 
    useEffect(()=>{
     handlePokemons().then(res=>{
-      dispatch({type:'SET_LOADING',payload:true})
+      dispatch({type:'pokemonsSlice/toggleLoading',payload:true})
       dispatch({
-       type:'SET_POKEMONS',
+       type:'pokemonsSlice/setPokemons',
        payload:res
      })
-    dispatch({type:'SET_LOADING',payload:false})
+    dispatch({type:'pokemonsSlice/toggleLoading',payload:false})
     }
     )
    },[]);

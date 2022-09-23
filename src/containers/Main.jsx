@@ -18,7 +18,6 @@ function Main({pokemons}) {
 
                         <nav className="d-inline-flex mt-2 mt-md-0 ms-md-auto">
                             <a className="me-3 py-2 text-dark text-decoration-none" href="https://www.wikidex.net/wiki/WikiDex">Wiki</a>
-                            {/* <a className="me-3 py-2 text-dark text-decoration-none" href="home">...</a> */}
                         </nav>
                     </div>
 
