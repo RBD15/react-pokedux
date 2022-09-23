@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const initialState={pokemons:[],loading:false};
+const initialState={pokemons:[],loading:true};
 
 export const pokemonsSlice = createSlice({
     name:'pokemonsSlice',
@@ -18,7 +18,7 @@ export const pokemonsSlice = createSlice({
             state.pokemons[pokemonIndex]=!state.pokemons[pokemonIndex].isFav;
         },
         toggleLoading: (state,action)=>{
-            state.loading=!state.loading;
+            state.loading=action.payload;
         }
     }
 
