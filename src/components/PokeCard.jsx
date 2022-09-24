@@ -6,14 +6,14 @@ function PokeCard({pokemon}){
     const dispatch = useDispatch()
     const addPokemon=()=>{
         dispatch({
-            type:'ADD_POKEMON_LIST',
+            type:'pokemonsSlice/addPokemonFavList',
             payload:pokemon
         })
     }
 
     const removePokemon=()=>{
         dispatch({
-            type:'REMOVE_POKEMON_LIST',
+            type:'pokemonsSlice/removePokemonFavList',
             payload:pokemon
         })
     }

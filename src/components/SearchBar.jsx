@@ -1,11 +1,11 @@
 import React from "react";
 import { useRef } from "react";
 
-function Search(){
+function Search({handleSearching}){
 
     const name = useRef()
     function searching(){
-        console.log(name.current.value)
+        handleSearching(name.current.value)
     }
 
     return(

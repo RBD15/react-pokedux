@@ -3,9 +3,17 @@ import { useSelector } from "react-redux";
 import PokeCard from "../components/PokeCard";
 import SearchBar from "../components/SearchBar";
 import Loading from '../components/Loading'
+import { useState } from "react";
+
 
 function Main({pokemons}) {
     const loading= useSelector(state=>state.loading);
+    const [nameFilter,setNameFilter]=useState('')
+
+    const handleSearching=(filterName)=>{
+        setNameFilter(filterName)
+    }
+    
     return (
         <Fragment>
             <div className="container py-3">
@@ -28,14 +36,18 @@ function Main({pokemons}) {
                 </header>
 
                 <main>
-                        <SearchBar/>
+                    <SearchBar handleSearching={handleSearching}/>
                     <div className="row row-cols-1 row-cols-md-3 mb-3 text-center">
                     {(()=>{
                             if(loading==true){
                                 return <Loading></Loading>
                             }else{
                                 return pokemons.map(pokemon=>{
-                                    return <PokeCard key={pokemon.name} pokemon={pokemon}/>
+                                    if(nameFilter=='' || nameFilter==undefined){
+                                        return <PokeCard key={pokemon.name} pokemon={pokemon}/>
+                                    }else if(pokemon.name.includes(nameFilter)){
+                                        return <PokeCard key={pokemon.name} pokemon={pokemon}/>
+                                    }
                                 })
                             }
                         })()
