@@ -13,7 +13,6 @@ function Search({handleSearching}){
             <div className="col">
                 <form className="d-flex" role="search">
                     <input className="form-control me-2" ref={name} type="search" placeholder="Search" aria-label="Search" onChange={searching} />
-                    {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
                 </form>
             </div>
         </div>
