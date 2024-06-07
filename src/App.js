@@ -3,6 +3,7 @@ import './App.css';
 import Main from './containers/Main';
 import { useDispatch, useSelector } from 'react-redux';
 import {handlePokemons} from './handles/index'
+import Loading from './components/Loading';
 function App() {
 
    const dispatch = useDispatch()
@@ -22,7 +23,8 @@ function App() {
 
   return (
     <div className="App">
-      <Main pokemons={pokemons}/>
+      {!pokemons.length>0 && <Loading />}
+      {pokemons && <Main pokemons={pokemons}/>}
     </div>
   );
 }

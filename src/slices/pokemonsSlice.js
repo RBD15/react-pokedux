@@ -9,16 +9,12 @@ export const pokemonsSlice = createSlice({
         setPokemons: (state,action)=>{
             state.pokemons=action.payload
         },
-        // pokemonFilter: (state,action)=>{
-        //     const pokemonIndex=state.pokemons.findIndex(pokemon=>pokemon.name==action.payload.name)
-        //     state.pokemons[pokemonIndex]=!state.pokemons[pokemonIndex].isFav;
-        // },
         addPokemonFavList: (state,action)=>{
-            const pokemonIndex=state.pokemons.findIndex(pokemon=>pokemon.name==action.payload.name)
+            const pokemonIndex=state.pokemons.findIndex(pokemon=>pokemon.name===action.payload.name)
             state.pokemons[pokemonIndex].isFav=!state.pokemons[pokemonIndex].isFav;
         },
         removePokemonFavList: (state,action)=>{
-            const pokemonIndex=state.pokemons.findIndex(pokemon=>pokemon.name==action.payload.name)
+            const pokemonIndex=state.pokemons.findIndex(pokemon=>pokemon.name===action.payload.name)
             state.pokemons[pokemonIndex].isFav=!state.pokemons[pokemonIndex].isFav;
         },
         toggleLoading: (state,action)=>{
